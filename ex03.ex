@@ -55,7 +55,15 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def find_atom(num) do
+    cond do
+      Integer.is_odd  num -> :odd
+      Integer.is_even num -> :even
+    end
+  end
+
+  def odd_even([]),                do: []
+  def odd_even([ first | rest ]),  do: [find_atom(first) | odd_even(rest)]
 
 
   ##############################################################################
@@ -77,7 +85,8 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([], num),                do: false
+  def list_contains([ first | rest ], num),  do: num == first or list_contains(rest, num)
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,9 +110,10 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
-
-
+  def list_equal([], []),                             do: true
+  def list_equal([], _n),                             do: false
+  def list_equal(_n, []),                             do: false
+  def list_equal([ num1 | rest1 ], [ num2 | rest2 ]), do: num1==num2 and list_equal(rest1, rest2)
 
   ##############################################################################
   # 3.4:  5 points #
@@ -149,7 +159,23 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  def won(x) do
+    case x do
+      # Vertical
+      {o, _, _, o, _, _, o, _, _} -> o
+      {_, o, _, _, o, _, _, o, _} -> o
+      {_, _, o, _, _, o, _, _, o} -> o
+      # Horiontal
+      {o, o, o, _, _, _, _, _, _} -> o
+      {_, _, _,o, o, o,  _, _, _} -> o
+      {_, _, _, _, _, _, o, o, o} -> o
+      # Diagonal
+      {o, _, _, _, o, _, _, _, o} -> o
+      {_, _, o, _, o, _, o, _, _} -> o
+      # Remaining possible cases
+      _                           -> false
+    end
+  end
 
 
   ###########################

@@ -60,7 +60,8 @@ defmodule Ex01 do
   # no explicit + operators in your function                          #
   #####################################################################
 
-  sum3a = fn (a, b, c) -> sum2a.(a, b) + c end
+  # NEED HELP HERE
+  sum3a = fn a, b, c -> sum2b.(sum2b.(a, b), c) end
 
   assert sum3a.(1, 3, 5)  == 9
   assert sum3a.(1, -3, 5) == 3
@@ -71,7 +72,8 @@ defmodule Ex01 do
   # Do the same using the & notation #
   ####################################
 
-  sum3b = your_anonymous_function
+  # NEED HELP HERE
+  sum3b = &(sum2b.(sum2b.(&1, &2), &3))
 
   assert sum3b.(1, 3, 5)  == 9
   assert sum3b.(1, -3, 5) == 3
